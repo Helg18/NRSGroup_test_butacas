@@ -3,7 +3,7 @@
 use App\Repositories\UserRepository;
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * @var UserRepository
@@ -11,7 +11,7 @@ class UserTableSeeder extends Seeder
     protected $userRepository;
 
     /**
-     * UserTableSeeder constructor.
+     * UsersTableSeeder constructor.
      * @param UserRepository $userRepository
      */
     public function __construct(UserRepository $userRepository)
