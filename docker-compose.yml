@@ -1,0 +1,58 @@
+version: "2.0"
+
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+        - ./:/var/www
+    environment:
+        - "APP_NAME=NRS Test"
+    networks:
+      - nrstest
+
+  web:
+    build:
+      context: ./docker
+      dockerfile: web.dockerfile
+    ports:
+      - "80:80"
+    working_dir: /var/www
+    networks:
+      - nrstest
+    volumes_from:
+      - app
+
+  redis:
+    image: redis:latest
+    ports:
+        - "6379:6379"
+    networks:
+      - nrstest
+
+  beanstalkd:
+    build:
+      context: ./docker
+      dockerfile: beanstalkd.dockerfile
+    networks:
+      - nrstest
+    ports:
+      - "11300:11300"
+
+  db:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: nrstest
+      MYSQL_ROOT_PASSWORD: secret
+    networks:
+      - nrstest
+
+networks:
+  nrstest:
+    external:
+      name: nrstest
