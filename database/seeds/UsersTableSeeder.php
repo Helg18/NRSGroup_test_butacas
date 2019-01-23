@@ -1,24 +1,9 @@
 <?php
 
-use App\Repositories\UserRepository;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
-    /**
-     * UsersTableSeeder constructor.
-     * @param UserRepository $userRepository
-     */
-    public function __construct(UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
     /**
      * Run the database seeds.
      *
@@ -26,22 +11,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = collect(
-            [
-                'first_name' => 'Henry',
-                'last_name' => 'Leon',
-                'email' => 'helg18@gmail.com'
-            ],
-            [
-                'first_name' => 'Esteban',
-                'last_name' => 'Gomez',
-                'email' => 'ehgl@gmail.com'
-            ],
-            );
+        $r = app(\App\Repositories\UserRepository::class);
 
-        $users->map(function ($user) {
-            $this->userRepository->firstOrCreate($user);
-        });
+        $henry = [
+            'first_name' => "Henry",
+            'last_name' => "Leon",
+            'email' => "helg18@gmail.com"
+        ];
 
+        $r->firstorcreate($henry);
     }
 }
