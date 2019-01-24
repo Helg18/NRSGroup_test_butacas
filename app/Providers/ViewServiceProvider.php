@@ -26,7 +26,8 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('users.index', UserComposer::class);
         View::composer('reservations.index', ReservationComposer::class);
-        View::composer(['reservations.create', 'reservations.edit'], ReservationCreateUpdateComposer::class);
+        View::composer(['reservations.create', 'reservations.edit', 'reservations.show'],
+            ReservationCreateUpdateComposer::class);
     }
 
     /**

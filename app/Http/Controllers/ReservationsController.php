@@ -59,6 +59,15 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'user_id' => 'required|exists:users,id',
+            'persons' => 'required|numeric|min:1',
+            'reserved_at' => 'required|date|after:today',
+            'comments' => 'string',
+            'butaca_id' => 'required|array',
+            'butaca_id.*' => 'exists:butacas,id'
+        ]);
+
         try {
             DB::beginTransaction();
             /** @var Reservation $reservation */
@@ -93,7 +102,9 @@ class ReservationsController extends Controller
      */
     public function show($id)
     {
-        //
+        $reservation = $this->reservationRepository->getById($id);
+
+        return view('reservations.show', compact('reservation'));
     }
 
     /**

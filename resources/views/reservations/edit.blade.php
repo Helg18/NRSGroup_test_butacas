@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="float-left">
-                    <h2><i class="fa fa-user"></i> Edit a reservation</h2>
+                    <h2><i class="fa fa-paste"></i> Edit a reservation</h2>
                 </div>
             </div>
             <div class="container-fluid mt-5">
@@ -61,7 +61,7 @@
                                                        value="{{ $butaca->id }}"
                                                        {{ in_array($butaca->id, $selected, true) ? "checked" : "" }}
                                                        onclick="countDiscountButaca(this)"/>
-                                                {{ $butaca->id }}
+                                                {{ $butaca->key }}
                                             </label>
                                         </div>
                                     @else

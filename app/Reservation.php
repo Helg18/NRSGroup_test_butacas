@@ -37,4 +37,14 @@ class Reservation extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function ownerFullname()
+    {
+        return $this->user ? $this->user->fullName() : false;
+    }
+
+    public function ownerEmail()
+    {
+        return $this->user ? $this->user->email : false;
+    }
+
 }

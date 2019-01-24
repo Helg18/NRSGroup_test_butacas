@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Observers\ReservationObserver;
+use App\Reservation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Reservation::observe(ReservationObserver::class);
     }
 
     /**
