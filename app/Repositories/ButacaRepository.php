@@ -78,9 +78,6 @@ class ButacaRepository extends AbstractRepository
             collect($id)->map(function ($each) use ($repository) {
                 $butaca = $this->getById($each);
                 $repository->update($butaca, ['available' => true]);
-//                dump($each);
-//                exit();
-//                Butaca::where('id', $each)->update(['available' => 1]);
             });
         } else {
             $butaca = $this->getById($id);
