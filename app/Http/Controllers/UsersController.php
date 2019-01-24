@@ -111,7 +111,7 @@ class UsersController extends Controller
         $this->validate($request, [
             'first_name' => 'required|min:3',
             'last_name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,' . $id,
         ]);
 
         try {
