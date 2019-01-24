@@ -39,7 +39,7 @@
                     <a class="nav-link" href="{{ route('users.index') }}">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reservations</a>
+                    <a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a>
                 </li>
             </ul>
             </div>
@@ -61,5 +61,6 @@
         @endif
         @yield('content')
     </div>
+    @yield('javascript-inline')
     </body>
 </html>

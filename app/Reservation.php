@@ -19,6 +19,7 @@ class Reservation extends Model
         'reserved_at',
         'persons',
         'comments',
+        'user_id'
     ];
 
     /**
@@ -29,6 +30,11 @@ class Reservation extends Model
     public function butacas()
     {
         return $this->belongsToMany(Butaca::class)->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

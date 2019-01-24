@@ -1,28 +1,34 @@
 @extends('welcome')
 
+@section('page_title', 'Reservations')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="float-left">
-                    <h2><i class="fa fa-user"></i> Users list</h2>
+                    <h2><i class="fa fa-list"></i> Reservations list</h2>
                 </div>
                 <div class="float-right">
-                    <a class="btn btn-primary" href="{{ route('users.create') }}"><i class="fa fa-plus"></i></a>
+                    <a class="btn btn-primary" href="{{ route('reservations.create') }}"><i class="fa fa-plus"></i></a>
                 </div>
                 <table class="table table-hover table-condensed">
+                    @if(count($reservations) > 0)
                     <thead>
-                    <td>Fisrt Name</td>
-                    <td>Last Name</td>
-                    <td>Email Name</td>
+                    <td>Reservation #</td>
+                    <td>Date</td>
+                    <td>Owner Name</td>
+                    <td>Quantity</td>
                     <td>Actions</td>
                     </thead>
+                    @endif
                     <tbody>
                     @forelse($reservations as $reservation)
                         <tr>
-                            <td>{{ $reservation->first_name }}</td>
-                            <td>{{ $reservation->last_name }}</td>
-                            <td>{{ $reservation->email }}</td>
+                            <td>{{ $reservation->id }}</td>
+                            <td>{{ $reservation->reserved_at }}</td>
+                            <td>{{ $reservation->user->fullname() }}</td>
+                            <td>{{ $reservation->persons }}</td>
                             <td>
                                 <form action="{{ route('reservations.destroy', $reservation->id) }}" method="post">
                                     {{ csrf_field() }}
@@ -46,12 +52,15 @@
                         </div>
                     @endforelse
                     </tbody>
+                    @if(count($reservations) > 0)
                     <tfoot>
-                    <td>Fisrt Name</td>
-                    <td>Last Name</td>
-                    <td>Email Name</td>
+                    <td>Reservation #</td>
+                    <td>Date</td>
+                    <td>Owner Name</td>
+                    <td>Quantity</td>
                     <td>Actions</td>
                     </tfoot>
+                    @endif
                 </table>
             </div>
         </div>

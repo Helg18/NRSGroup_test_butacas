@@ -18,7 +18,7 @@ class CreateReservationsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->date('reserved_at');
             $table->integer('persons');
-            $table->string('comments');
+            $table->string('comments')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

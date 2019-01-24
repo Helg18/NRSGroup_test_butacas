@@ -11,12 +11,14 @@
                     <a class="btn btn-primary" href="{{ route('users.create') }}"><i class="fa fa-plus"></i></a>
                 </div>
                 <table class="table table-hover table-condensed">
+                    @if(count($users) > 0)
                     <thead>
                     <td>Fisrt Name</td>
                     <td>Last Name</td>
                     <td>Email Name</td>
                     <td>Actions</td>
                     </thead>
+                    @endif
                     <tbody>
                     @forelse($users as $user)
                         <tr>
@@ -46,12 +48,14 @@
                         </div>
                     @endforelse
                     </tbody>
+                    @if(count($users) > 0)
                     <tfoot>
                     <td>Fisrt Name</td>
                     <td>Last Name</td>
                     <td>Email Name</td>
                     <td>Actions</td>
                     </tfoot>
+                    @endif
                 </table>
             </div>
         </div>

@@ -19,8 +19,8 @@ class ButacaReservation extends Migration
             $table->unsignedInteger('reservation_id');
             $table->timestamps();
 
-            $table->foreign('butaca_id')->references('id')->on('butacas');
-            $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->foreign('butaca_id')->references('id')->on('butacas')->onDelete('cascade');
+            $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');
 
         });
     }

@@ -32,4 +32,9 @@ class Butaca extends Model
         return $this->belongsToMany(Reservation::class)->withTimestamps();
     }
 
+    public function scopeOfAvailable($query, $value)
+    {
+        return $query->where('butacas.available', '=', $value);
+    }
+
 }
