@@ -9,6 +9,7 @@
 namespace App\Providers;
 
 
+use App\Http\ViewComposers\HomeComposer;
 use App\Http\ViewComposers\ReservationComposer;
 use App\Http\ViewComposers\ReservationCreateUpdateComposer;
 use App\Http\ViewComposers\UserComposer;
@@ -26,6 +27,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('users.index', UserComposer::class);
         View::composer('reservations.index', ReservationComposer::class);
+        View::composer('home', HomeComposer::class);
         View::composer(['reservations.create', 'reservations.edit', 'reservations.show'],
             ReservationCreateUpdateComposer::class);
     }
