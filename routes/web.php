@@ -5,4 +5,4 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::resource('users', 'UserController');
+Route::resource('users', 'UsersController');

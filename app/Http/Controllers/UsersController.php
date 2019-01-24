@@ -6,7 +6,7 @@ use App\Repositories\UserRepository;
 use Exception;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * @var UserRepository
