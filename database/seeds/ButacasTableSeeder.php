@@ -18,7 +18,7 @@ class ButacasTableSeeder extends Seeder
             for ($col = 1; $col < 11; $col++) {
 
                 // adding
-                $repository->create([
+                $repository->firstOrCreate([
                     'key' => "${row}-${col}",
                     'col' => $col,
                     'row' => $row

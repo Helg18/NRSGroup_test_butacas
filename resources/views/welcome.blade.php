@@ -18,6 +18,9 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+              integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+              crossorigin="anonymous">
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,7 +44,21 @@
             </ul>
             </div>
     </nav>
-    <div>
+    <div class="wrapper wrapper-content">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @yield('content')
     </div>
     </body>

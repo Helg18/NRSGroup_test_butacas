@@ -22,7 +22,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layouts.users.index', UserComposer::class);
+        View::composer('users.index', UserComposer::class);
     }
 
     /**
